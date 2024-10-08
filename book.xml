@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <book id="1">
+        <title>《百年孤独》</title>
+        <author>加夫列尔·加西亚·马尔克斯</author>
+        <price>55.00元</price>
+    </book>
+    
+    <book id="2">
+        <title>《时间简史》</title>
+        <author>斯蒂芬·威廉·霍金</author>
+        <price>54.60元</price>
+    </book>
+
+    <book id="3">
+        <title>《狂人日记》</title>
+        <author>鲁迅</author>
+        <price>49.00元</price>
+    </book>
+</bookstore>

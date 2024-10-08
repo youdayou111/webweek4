@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Book Store</title>
+</head>
+<body>
+    <h1>Book Store</h1>
+    <div id="Book-list"></div>
+    <script>
+        const fetchPromise = fetch('books.xml');
+        fetchPromise
+            .then(Response => {
+                if (!Response.ok) {
+                    throw new Error('Network response was not ok');   
+                }
+                return Response.text();
+            })
+            .then(xmlText => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText,'text/xml');
+
+                const book = xmlDoc.getElementsByTagName("book")
+                let htmlContent = '';
+
+                for(let i=0;i<book.length;i++) {
+                    const title = book[i].getElementsByTagName('title')[0].textContent;
+                    const author = book[i].getElementsByTagName('author')[0].textContent;
+                    const price = book[i].getElementsByTagName('price')[0].textContent;
+
+                        htmlContent += `
+                            <div class="book">
+                                <h2>${title}</h2>
+                                <p>作者: ${author}</p>
+                                <p>价格: ${price}</p>
+                            </div>
+                        `;
+                }
+                document.getElementById('Book-list').innerHTML = htmlContent;
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    </script>
+</body>
+</html>
